@@ -5,11 +5,15 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import registerOffice.businessObjects.cars.Car;
 import registerOffice.businessObjects.cars.PersonCar;
 import registerOffice.businessObjects.persons.*;
 import registerOffice.management.HibernatePersonManager;
+import registerOffice.management.ManagerInterface;
+import registerOffice.management.PersonManager;
 
 public class Main {
 
@@ -18,9 +22,34 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+		Person adam = (Person)context.getBean("person");
 		
-		SessionFactory factory = new Configuration().configure().buildSessionFactory();
-		Session session = factory.openSession();
+		System.out.println(adam.getId()+adam.getName()+adam.getPesel());
+		
+		for(Car c : adam.getCars())
+		{
+			System.out.println(c.getCarDetails());
+		}
+		
+		
+		
+		
+		
+		
+		
+	//	ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+		
+		//Person p = (Person)context.getBean("person");
+		//Car car=(Car)context.getBean("carA");
+//		System.out.println(p.getId()+p.getName()+p.getPesel());
+//		
+//		for(Car car : p.getCars())
+//			System.out.println(car.getCarDetails());
+
+		
+//		SessionFactory factory = new Configuration().configure().buildSessionFactory();
+//		Session session = factory.openSession();
 		//session.beginTransaction();
 //		
 //		//
@@ -40,21 +69,21 @@ public class Main {
 //			System.out.println(p.getName());
 //		session.getTransaction().commit();
 //		session.close();
+//		
+//		ManagerInterface<Person> mgr = new PersonManager();
+//		mgr.save(new Person("Adam","1234"));
+//		mgr.save(new Person("Michal","1234"));
+//		mgr.save(new Person("Paweł","1234"));
+//		Person person =new Person("Adam");
+//		person.setId(10);
+//		mgr.delete(person);
+//		//session.getTransaction().commit();
+//		for(Person p: mgr.getAll())
+//		{
+//			System.out.println(p.getName());
+//		}
 		
-		HibernatePersonManager mgr = new HibernatePersonManager(session);
-		mgr.save(new Person("Adam","1234"));
-		mgr.save(new Person("Michal","1234"));
-		mgr.save(new Person("Paweł","1234"));
-		Person person =new Person("Adam");
-		person.setId(10);
-		mgr.delete(person);
-		//session.getTransaction().commit();
-		for(Person p: mgr.getAll())
-		{
-			System.out.println(p.getName());
-		}
-		
-		session.close();
+//		session.close();
 		//System.out.println("Osoba o id 4:"+mgr.get(4).getName());
 		
 	}

@@ -70,7 +70,7 @@ public class Person {
 	public Collection<Car> getCars() {
 		return cars;
 	}
-	public void setCars(List<Car> cars) {
+	public void setCars(Collection<Car> cars) {
 		this.cars = cars;
 	}
 
