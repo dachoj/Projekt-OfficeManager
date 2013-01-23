@@ -1,9 +1,9 @@
-package registerOffice.businessObjects.cars;
+package registerOffice.businessObjects.movies;
 
 import javax.persistence.Entity;
 
 @Entity
-public class PersonCar extends Car{
+public class PersonMovie extends Movie{
 
 	//pole statyczne
 	
@@ -15,13 +15,13 @@ public class PersonCar extends Car{
 	//pola publiczne
 	
 	//konstruktory
-	public PersonCar(String mark, String registerNumber)
+	public PersonMovie(String mark, String registerNumber)
 	{
 		this.mark=mark;
 		this.registerNumber=registerNumber;
 	}
 	
-	public PersonCar()
+	public PersonMovie()
 	{
 		this("","");
 	}
@@ -47,15 +47,15 @@ public class PersonCar extends Car{
 	
 
 	@Override
-	public String getCarDetails() {
+	public String getMovieDetails() {
 		// TODO Auto-generated method stub
 		return mark+" "+registerNumber;
 	}
 
 	@Override
-	public Car Clone() {
+	public Movie Clone() {
 		
-		PersonCar returnValue =new PersonCar();
+		PersonMovie returnValue =new PersonMovie();
 		returnValue.setRegisterNumber(this.registerNumber);
 		
 		return returnValue;

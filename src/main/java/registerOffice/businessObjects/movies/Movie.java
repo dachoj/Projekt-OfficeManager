@@ -1,4 +1,4 @@
-package registerOffice.businessObjects.cars;
+package registerOffice.businessObjects.movies;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 import registerOffice.businessObjects.persons.Person;
 
 @Entity
-public abstract class Car implements CarInterface{
+public abstract class Movie implements MovieInterface{
 
 	@Id
 	@GeneratedValue
@@ -18,12 +18,12 @@ public abstract class Car implements CarInterface{
 	public void printData()
 	{
 		System.out.println("Owner: "+owner.getName());
-		System.out.println(getCarDetails());
+		System.out.println(getMovieDetails());
 	}
 	
-	public abstract String getCarDetails();
+	public abstract String getMovieDetails();
 	
-	public abstract Car Clone();
+	public abstract Movie Clone();
 	
 	public void setOwner(Person owner)
 	{

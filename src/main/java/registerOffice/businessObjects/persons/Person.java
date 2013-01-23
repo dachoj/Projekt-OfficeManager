@@ -14,7 +14,7 @@ import javax.persistence.Transient;
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
 
-import registerOffice.businessObjects.cars.*;
+import registerOffice.businessObjects.movies.*;
 
 @NamedQueries({
 		@NamedQuery(
@@ -41,14 +41,14 @@ public class Person {
 	private String name;
 	
 	@OneToMany(mappedBy="owner", cascade=javax.persistence.CascadeType.PERSIST)
-	private Collection<Car> cars;
+	private Collection<Movie> movies;
 	private String pesel;
 	
 	public Person(String name, String pesel)
 	{
 		this.pesel=pesel;
 		this.name=name;
-		this.cars=new CarsList(this);
+		this.movies=new MoviesList(this);
 	}
 	
 	public Person(String name) {
@@ -67,11 +67,11 @@ public class Person {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Collection<Car> getCars() {
-		return cars;
+	public Collection<Movie> getMovies() {
+		return movies;
 	}
-	public void setCars(Collection<Car> cars) {
-		this.cars = cars;
+	public void setMovies(Collection<Movie> movies) {
+		this.movies = movies;
 	}
 
 	public String getPesel() {

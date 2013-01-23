@@ -8,8 +8,8 @@ import org.hibernate.cfg.Configuration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import registerOffice.businessObjects.cars.Car;
-import registerOffice.businessObjects.cars.PersonCar;
+import registerOffice.businessObjects.movies.Movie;
+import registerOffice.businessObjects.movies.PersonMovie;
 import registerOffice.businessObjects.persons.*;
 import registerOffice.management.HibernatePersonManager;
 import registerOffice.management.ManagerInterface;
@@ -23,13 +23,13 @@ public class Main {
 	public static void main(String[] args) {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-		Person adam = (Person)context.getBean("person");
+		Person damian = (Person)context.getBean("person");
 		
-		System.out.println(adam.getId()+adam.getName()+adam.getPesel());
+		System.out.println(damian.getId()+damian.getName()+damian.getPesel());
 		
-		for(Car c : adam.getCars())
+		for(Movie m : damian.getMovies())
 		{
-			System.out.println(c.getCarDetails());
+			System.out.println(m.getMovieDetails());
 		}
 		
 		
